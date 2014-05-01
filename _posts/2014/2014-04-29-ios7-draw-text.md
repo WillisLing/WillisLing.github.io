@@ -9,9 +9,9 @@ tags:
 ---
 
 今天的项目在适配 iOS7 时，发现一个很奇怪的问题。相同的代码，在 iOS7 系统上，会出现一条大约一像素的细线：<br>
-![带细线](/media/images/2014-04-29_1.png)<br><br>
+![带细线](/assets/images/2014-04-29_1.png)<br><br>
 而在 iOS7 以下的版本却没有这个问题：<br>
-![正常](/media/images/2014-04-29_2.png)<br><br>
+![正常](/assets/images/2014-04-29_2.png)<br><br>
 这个文本框的背景使用的是 `resizableImageWithCapInsets:` 拉伸后的图片，而其他非拉伸背景上的文本却是正常显示的。于是，初步猜测是 `resizableImageWithCapInsets:` 的问题。
 
 然后 google 发现 stackOverFlow 上也有人[碰到这个问题](http://stackoverflow.com/questions/19005668/resizableimagewithcapinsets-to-strech-chat-bubble-issue-in-ios7)，下面给出了一些浮点型取整的方案，但是问题并没有得到解决。另外提问者给出了一个 [github 类似问题的链接](https://github.com/jessesquires/MessagesTableViewController/issues/50)。结合这两个问题一看，猜测可能之前的方向搞错了，可能不是 `resizableImageWithCapInsets:` 的问题，而很可能是文本绘制的问题。
